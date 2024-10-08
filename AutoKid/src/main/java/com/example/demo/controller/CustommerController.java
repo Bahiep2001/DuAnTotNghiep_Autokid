@@ -25,6 +25,7 @@ public class CustommerController {
 
     @GetMapping("home")
     public String home(Model model){
+        model.addAttribute("currentPage","home");
         model.addAttribute("ghct", gioHangChiTietRepo.findAll());
         model.addAttribute("sanpham", quanLySanPhamService.getAll());
         model.addAttribute("loaisp", loaiSanPhamRepo.findAll());
@@ -32,27 +33,32 @@ public class CustommerController {
     }
 
     @GetMapping("/shop")
-    public String showShop(){
+    public String showShop(Model model){
+        model.addAttribute("currentPage","shop");
         return "/autokid/shop-grid";
     }
 
     @GetMapping("/shop-detail")
-    public String showShopDetail(){
+    public String showShopDetail(Model model){
+        model.addAttribute("currentPage","shop-detail");
         return "/autokid/shop-details";
     }
 
     @GetMapping("/shoping-cart")
-    public String showShoppingCart(){
+    public String showShoppingCart(Model model){
+        model.addAttribute("currentPage","shoping-cart");
         return "/autokid/shoping-cart";
     }
 
     @GetMapping("/checkout")
-    public String showCheckout(){
+    public String showCheckout(Model model){
+        model.addAttribute("currentPage","checkout");
         return "/autokid/checkout";
     }
 
     @GetMapping("/contact")
-    public String showContact(){
+    public String showContact(Model model){
+        model.addAttribute("currentPage","contact");
         return "/autokid/contact";
     }
 }
