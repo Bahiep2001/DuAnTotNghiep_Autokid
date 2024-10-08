@@ -5,11 +5,6 @@
     <title>Header</title>
 </head>
 <body>
-<!-- Page Preloader -->
-<div id="preloder">
-    <div class="loader"></div>
-</div>
-
 <!-- Humberger Menu -->
 <div class="humberger__menu__overlay"></div>
 <div class="humberger__menu__wrapper">
@@ -38,17 +33,17 @@
     </div>
     <nav class="humberger__menu__nav mobile-menu">
         <ul>
-            <li class="active"><a th:href="@{/autokid/home}">Trang chủ</a></li>
-            <li><a th:href="@{/autokid/shop}">Cửa hàng</a></li>
+            <li class="active"><a th:href="@{http://localhost:8080/autokid/home}">Trang chủ</a></li>
+            <li><a th:href="@{http://localhost:8080/autokid/shop}">Cửa hàng</a></li>
             <li>
                 <a href="#">Trang</a>
                 <ul class="header__menu__dropdown">
-                    <li><a th:href="@{/autokid/shop-detail}">Cửa hàng chi tiết</a></li>
-                    <li><a th:href="@{/autokid/shoping-cart}">Giỏ hàng</a></li>
-                    <li><a th:href="@{/autokid/checkout}">Thanh toán</a></li>
+                    <li><a th:href="@{http://localhost:8080/autokid/shop-detail}">Cửa hàng chi tiết</a></li>
+                    <li><a th:href="@{http://localhost:8080/autokid/shoping-cart}">Giỏ hàng</a></li>
+                    <li><a th:href="@{http://localhost:8080/autokid/checkout}">Thanh toán</a></li>
                 </ul>
             </li>
-            <li><a th:href="@{/autokid/contact}">Liên hệ</a></li>
+            <li><a th:href="@{http://localhost:8080/autokid/contact}">Liên hệ</a></li>
         </ul>
     </nav>
     <div id="mobile-menu-wrap"></div>
@@ -107,23 +102,23 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="header__logo">
-                    <a th:href="@{/autokid/home}"><img th:src="@{/img/logo.png}" alt="" style="width: 120px; height: 120px;" /></a>
+                    <a th:href="@{http://localhost:8080/autokid/home}"><img th:src="@{/img/logo.png}" alt="" style="width: 120px; height: 120px;" /></a>
                 </div>
             </div>
             <div class="col-lg-6">
                 <nav class="header__menu">
                     <ul>
-                        <li class="active"><a th:href="@{/autokid/home}">Trang chủ hihihi</a></li>
-                        <li><a th:href="@{/autokid/shop}">Cửa hàng</a></li>
+                        <li class="active"><a th:href="@{http://localhost:8080/autokid/home}">Trang chủ hihihi</a></li>
+                        <li><a th:href="@{http://localhost:8080/autokid/shop}">Cửa hàng</a></li>
                         <li>
                             <a href="#">Trang</a>
                             <ul class="header__menu__dropdown">
-                                <li><a th:href="@{/autokid/shop-detail}">Cửa hàng chi tiết</a></li>
-                                <li><a th:href="@{/autokid/shoping-cart}">Giỏ hàng</a></li>
-                                <li><a th:href="@{/autokid/checkout}">Thanh toán</a></li>
+                                <li><a th:href="@{http://localhost:8080/autokid/shop-detail}">Cửa hàng chi tiết</a></li>
+                                <li><a th:href="@{http://localhost:8080/autokid/shoping-cart}">Giỏ hàng</a></li>
+                                <li><a th:href="@{http://localhost:8080/autokid/checkout}">Thanh toán</a></li>
                             </ul>
                         </li>
-                        <li><a th:href="@{/autokid/contact}">Liên hệ</a></li>
+                        <li><a th:href="@{http://localhost:8080/autokid/contact}">Liên hệ</a></li>
                     </ul>
                 </nav>
             </div>
