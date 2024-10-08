@@ -26,12 +26,14 @@
   </head>
 
   <body>
-  <!-- Page Preloader -->
-  <div id="preloder">
-    <div class="loader"></div>
-  </div>
+    <!-- Page Preloder -->
+    <div id="preloder">
+      <div class="loader"></div>
+    </div>
+    
+    <th:block th:replace="autokid/header :: fragment"></th:block>
 
-  <th:block th:replace="autokid/header :: fragment"></th:block>
+
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
       <div class="container">
@@ -84,10 +86,10 @@
         <div class="row">
           <div class="col-lg-12 text-center">
             <div class="breadcrumb__text">
-              <h2>Checkout</h2>
+              <h2>Thanh toán</h2>
               <div class="breadcrumb__option">
                 <a th:href="@{http://localhost:8080/autokid/home}">Trang chủ</a>
-                <span>Checkout</span>
+                <span>Thanh toán</span>
               </div>
             </div>
           </div>
@@ -211,9 +213,6 @@
                       <span class="checkmark"></span>
                     </label>
                   </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
                   <div class="checkout__input__checkbox">
                     <label for="payment">
                       Thanh toán bằng séc
@@ -238,7 +237,7 @@
     <!-- Kết thúc phần thanh toán -->
 
     <!-- Phần footer bắt đầu -->
-  <th:block th:replace="autokid/footer :: fragment"></th:block>
+    <th:block th:replace="autokid/footer :: fragment"></th:block>
     <!-- Kết thúc phần footer -->
 
     <!-- Js Plugins -->
