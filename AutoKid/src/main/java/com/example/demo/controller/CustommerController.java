@@ -23,12 +23,12 @@ public class CustommerController {
     @Autowired
     LoaiSanPhamRepo loaiSanPhamRepo;
 
-    @GetMapping("home")
+    @GetMapping("/home")
     public String home(Model model){
         model.addAttribute("ghct", gioHangChiTietRepo.findAll());
         model.addAttribute("sanpham", quanLySanPhamService.getAll());
         model.addAttribute("loaisp", loaiSanPhamRepo.findAll());
-    return "/autokid/index";
+    return "autokid/index";
     }
 
     @GetMapping("/shop")
