@@ -112,9 +112,11 @@ CREATE TABLE san_pham (
     ma_sp NVARCHAR(50),
     ten_sp NVARCHAR(100),
     trang_thai_sp NVARCHAR(50),
+	ngay_tao date,
     id_loai_sp INT,
     FOREIGN KEY (id_loai_sp) REFERENCES loai_sp(id_loai_sp)
 );
+
 
 -- Bảng san_pham_chi_tiet
 CREATE TABLE san_pham_chi_tiet (

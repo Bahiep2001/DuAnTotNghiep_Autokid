@@ -22,6 +22,9 @@ public class SanPham {
     @Column(name = "trang_thai_sp")
     private String trangThaiSP;
 
+    @Column(name = "ngay_tao")
+    private String ngayTao;
+
     @ManyToOne
     @JoinColumn(name = "id_loai_sp")
     private LoaiSanPham loaiSanPham;

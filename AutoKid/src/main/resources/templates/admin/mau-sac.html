@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto_Kid | Product Management</title>
+    <title>Auto_Kid | Thuong Hieu</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon">
     <!-- Custom styles -->
@@ -22,7 +22,7 @@
         <!-- ! Main -->
         <main class="main users chart-page" id="skip-target">
             <div class="container">
-                <h2 class="main-title">Quản Lý Sản Phẩm</h2>
+                <h2 class="main-title">Quản Lý Màu Sắc</h2>
                 <div class="row">
                     <div class="col-4">
                         <input type="text"  placeholder="Tìm kiếm sản phẩm ..." required>
@@ -36,36 +36,28 @@
                 <div class="users-table table-wrapper">
                     <table class="posts-table">
                         <thead>
-                            <tr class="users-table-info">
-                                <th>Mã sản phẩm</th>
-                                <th>Ảnh</th>
-                                <th>Tên sản phẩm</th>
-                                <th>Trạng thái</th>
-                                <th>Ngày tạo</th>
-                                <th>Hành động</th>
-                            </tr>
+                        <tr class="users-table-info">
+                            <th>Mã màu sắc</th>
+                            <th>Tên màu sắc</th>
+                            <th>Trạng thái</th>
+                            <th>Hành động</th>
+                        </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="spct : ${spcts}">
-                                <td th:text="${spct.maSPCT}"></td>
-                                <td>
-                                    <div class="categories-table-img">
-                                        <img src="./img/categories/01.jpg" alt="product">
-                                    </div>
-                                </td>
-                                <td th:text="${spct.sanPham.tenSP}"></td>
-                                <td th:text="${spct.trangThaiSPCT}"></td>
-                                <td th:text="${spct.sanPham.ngayTao}"></td>
-                                <td>
-                                    <button class="dropdown-btn transparent-btn" type="button" title="More info">
-                                        <i data-feather="more-horizontal" aria-hidden="true"></i>
-                                    </button>
-                                    <ul class="users-item-dropdown dropdown">
-                                        <li><a href="#">Chỉnh sửa</a></li>
-                                        <li><a href="#">Xoá</a></li>
-                                    </ul>
-                                </td>
-                            </tr>
+                        <tr th:each="ms : ${ms}">
+                            <td th:text="${ms.maMS}"></td>
+                            <td th:text="${ms.tenMS}"></td>
+                            <td th:text="${ms.trangThaiMS}"></td>
+                            <td>
+                                <button class="dropdown-btn transparent-btn" type="button" title="More info">
+                                    <i data-feather="more-horizontal" aria-hidden="true"></i>
+                                </button>
+                                <ul class="users-item-dropdown dropdown">
+                                    <li><a href="#">Chỉnh sửa</a></li>
+                                    <li><a href="#">Xoá</a></li>
+                                </ul>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
