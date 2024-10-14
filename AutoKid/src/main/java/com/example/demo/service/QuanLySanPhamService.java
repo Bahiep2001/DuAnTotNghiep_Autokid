@@ -29,6 +29,9 @@ public class QuanLySanPhamService {
     @Autowired
     KichCoRepo kichCoRepo;
 
+    @Autowired
+    ChatLieuRepo chatLieuRepo;
+
     public List<SanPhamChiTietResponse> getAll(){
         List<SanPhamChiTietResponse> list = new ArrayList<>();
         for(SanPhamChiTiet spct: repoSPCT.findAll()){
@@ -45,17 +48,10 @@ public class QuanLySanPhamService {
         return thuongHieuRepo.findAll();
     }
 
-    public List<MauSac> getAllMauSac(){
-        return mauSacRepo.findAll();
-    }
-
-    public List<KichCo> getAllKichCo(){
-        return kichCoRepo.findAll();
-    }
-
     public void AddThuongHieu(ThuongHieu thuongHieu){
-       thuongHieuRepo.save(thuongHieu);
+        thuongHieuRepo.save(thuongHieu);
     }
+
 
     public void DeleteThuongHieu(Integer id){
         thuongHieuRepo.deleteById(id);
@@ -64,5 +60,47 @@ public class QuanLySanPhamService {
     public void DetailThuongHieu(Integer id){
         thuongHieuRepo.findById(id);
     }
+
+    public List<MauSac> getAllMauSac(){
+        return mauSacRepo.findAll();
+    }
+
+    public void addMauSac(MauSac mauSac){
+        mauSacRepo.save(mauSac);
+    }
+
+    public void deleteMauSac(Integer id){
+        mauSacRepo.deleteById(id);
+    }
+
+    public void detailMauSac(Integer id){
+        mauSacRepo.findById(id);
+    }
+
+    public List<KichCo> getAllKichCo(){
+        return kichCoRepo.findAll();
+    }
+
+    public void addKichCo(KichCo kichCo){
+        kichCoRepo.save(kichCo);
+    }
+
+    public void deleteKichCo(Integer id){
+        kichCoRepo.deleteById(id);
+    }
+
+    public List<ChatLieu> getAllChatLieu(){
+        return chatLieuRepo.findAll();
+    }
+
+    public void addChatLieu(ChatLieu chatLieu){
+        chatLieuRepo.save(chatLieu);
+    }
+
+    public void deleteChatLieu(Integer id){
+        chatLieuRepo.deleteById(id);
+    }
+
+
 
 }

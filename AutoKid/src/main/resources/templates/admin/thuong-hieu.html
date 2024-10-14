@@ -23,16 +23,15 @@
         <main class="main users chart-page" id="skip-target">
             <div class="container">
                 <h2 class="main-title">Quản Lý Thương Hiệu</h2>
-                <div class="row container">
-                    <div class="col-2">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            ADD
-                        </button>
-
+                <div class="row">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">ADD</button>
                     </div>
-                    <div class="input-group mb-3" style="padding-left: 700px;">
-                        <input type="text" class="form-control" placeholder="Tìm kiếm sản phẩm ..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                        <button class="btn btn-primary" type="button" id="button-addon2">Tìm kiếm</button>
+                    <div class="col-5">
+                        <div class="row">
+                            <div class="col-7"><input placeholder="Tìm kiếm thương hiệu"></div>
+                            <div class="col-3"><button type="button" class="btn btn-primary">Tìm kiếm</button></div>
+                        </div>
                     </div>
                 </div>
                 <div class="users-table table-wrapper">
@@ -53,8 +52,8 @@
                             <td th:text="${th.diaChi}"></td>
                             <td th:text="${th.trangThaiTH}"></td>
                             <td>
-                                <a th:href="@{/admin/thuong-hieu/delete(id=${th.id})}">Xóa</a>
-                                <a th:href="@{/admin/thuong-hieu/(id=${th.id})}">Xóa</a>
+                                <a th:href="@{/admin/thuong-hieu/delete(id=${th.id})}"><button class="btn btn-primary">Delete</button></a>
+                                <a th:href="@{/admin/thuong-hieu/detail(id=${th.id})}"><button class="btn btn-success">Detail</button></a>
                             </td>
                         </tr>
                         </tbody>
@@ -76,11 +75,11 @@
                     <form action="/admin/add/thuong-hieu" method="post">
                         <div class="mb-3">
                             <label for="maTH" class="form-label">Mã thương hiệu:</label>
-                            <input type="text" class="form-control" id="maTH" name="maTH" required>
+                            <input type="text" class="form-control border border-secondary" id="maTH" name="maTH" required>
                         </div>
                         <div class="mb-3">
                             <label for="tenTH" class="form-label">Tên thương hiệu:</label>
-                            <input type="text" class="form-control" id="tenTH" name="tenTH" required>
+                            <input type="text" class="form-control border border-secondary" id="tenTH" name="tenTH" required>
                         </div>
                         <div class="mb-3">
                             <label for="trangThaiTH">Trạng thái</label>

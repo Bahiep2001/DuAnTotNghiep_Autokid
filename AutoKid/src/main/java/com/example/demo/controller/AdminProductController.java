@@ -1,9 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.KichCo;
-import com.example.demo.model.MauSac;
-import com.example.demo.model.SanPhamChiTiet;
-import com.example.demo.model.ThuongHieu;
+import com.example.demo.model.*;
 import com.example.demo.service.QuanLySanPhamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,11 +47,37 @@ public class AdminProductController {
         return "admin/mau-sac";
     }
 
+    @PostMapping("/add/mau-sac")
+    public String addMauSac(@ModelAttribute MauSac mauSac){
+        service.addMauSac(mauSac);
+        return "redirect:/admin/mau-sac";
+    }
+
+    @GetMapping("/mau-sac/delete")
+    public String deleteMauSac(@RequestParam("id") Integer id){
+        service.deleteMauSac(id);
+        return "redirect:/admin/mau-sac";
+    }
+
+
     @GetMapping("/kich-co")
     public String kichCo(Model model){
         List<KichCo> list = service.getAllKichCo();
         model.addAttribute("kichco", list);
         return "admin/kich-co";
+    }
+
+
+    @PostMapping("/add/kich-co")
+    public String addKichCo(@ModelAttribute KichCo kichCo){
+        service.addKichCo(kichCo);
+        return "redirect:/admin/kich-co";
+    }
+
+    @GetMapping("/kich-co/delete")
+    public String deleteKichCo(@RequestParam("id") Integer id){
+        service.deleteKichCo(id);
+        return "redirect:/admin/kich-co";
     }
 
     @PostMapping("/add/thuong-hieu")
@@ -75,5 +98,24 @@ public class AdminProductController {
         return "admin/thuong-hieu";
     }
 
+
+    @GetMapping("/chat-lieu")
+    public String chatLieu(Model model){
+        List<ChatLieu> list = service.getAllChatLieu();
+        model.addAttribute("cl", list);
+        return "admin/chat-lieu";
+    }
+
+    @PostMapping("/add/chat-lieu")
+    public String addChatLieu(@ModelAttribute ChatLieu chatLieu){
+        service.addChatLieu(chatLieu);
+        return "redirect:/admin/chat-lieu";
+    }
+
+    @GetMapping("/delete/chat-lieu")
+    public String deleteChatLieu(@RequestParam("id") Integer id){
+        service.deleteChatLieu(id);
+        return "redirect:/admin/chat-lieu";
+    }
 }
 
