@@ -24,7 +24,9 @@ public class AdminProductController {
     @GetMapping("/products")
     public String products(Model model) {
         List<SanPhamChiTiet> sanPhamChiTiets = service.getAllSanPhamChiTiets();
+        List<SanPham> sanPhams = service.getAllSanPham();
         model.addAttribute("spcts", sanPhamChiTiets);
+//        model.addAttribute("spcts", sanPhams);
         return "admin/products";
     }
 
@@ -98,6 +100,12 @@ public class AdminProductController {
         return "admin/thuong-hieu";
     }
 
+    @GetMapping("/thuong-hieu/search")
+    public String searchTH(@RequestParam("tenTH") String tenTH , Model model){
+        List<ThuongHieu> list = service.searchTH("%" + tenTH +"%");
+        model.addAttribute("ths", list);
+        return "admin/thuong-hieu";
+    }
 
     @GetMapping("/chat-lieu")
     public String chatLieu(Model model){

@@ -28,10 +28,14 @@
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">ADD</button>
                     </div>
                     <div class="col-5">
-                        <div class="row">
-                            <div class="col-7"><input placeholder="Tìm kiếm thương hiệu"></div>
-                            <div class="col-3"><button type="button" class="btn btn-primary">Tìm kiếm</button></div>
-                        </div>
+                        <form action="/admin/thuong-hieu/search" method="GET" class="row">
+                            <div class="col-7">
+                                <input name="tenTH" placeholder="Tìm kiếm thương hiệu" class="form-control">
+                            </div>
+                            <div class="col-3">
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="users-table table-wrapper">

@@ -44,6 +44,10 @@ public class QuanLySanPhamService {
         return sanPhamChiTietRepo.findAll();
     }
 
+    public List<SanPham> getAllSanPham(){
+        return sanPhamRepo.findAll();
+    }
+
     public List<ThuongHieu> getAllThuongHieu(){
         return thuongHieuRepo.findAll();
     }
@@ -59,6 +63,10 @@ public class QuanLySanPhamService {
 
     public void DetailThuongHieu(Integer id){
         thuongHieuRepo.findById(id);
+    }
+
+    public List<ThuongHieu> searchTH(String tenTH){
+         return  thuongHieuRepo.searchThuongHieu("%" + tenTH + "%");
     }
 
     public List<MauSac> getAllMauSac(){
