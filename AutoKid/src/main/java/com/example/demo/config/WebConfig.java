@@ -11,5 +11,10 @@ public class WebConfig implements WebMvcConfigurer {
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/autokid/**")
                 .addResourceLocations("classpath:/templates/autokid/");
+
+        registry.addResourceHandler("/admin/customer-management/**")
+                .addResourceLocations("classpath:/templates/admin/");
     }
+
+
 }

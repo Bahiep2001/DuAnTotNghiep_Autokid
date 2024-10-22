@@ -3,6 +3,9 @@ package com.example.demo.response;
 import com.example.demo.model.SanPhamChiTiet;
 import lombok.Data;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 @Data
 public class SanPhamChiTietResponse {
     private Integer idSPCT;
@@ -14,7 +17,7 @@ public class SanPhamChiTietResponse {
     private String kichCo;
     private String thuongHieu;
     private Integer soLuong;
-    private Double donGia;
+    private String donGia;
     private String anh;
     private String moTa;
     private String trangThai;
@@ -29,7 +32,7 @@ public class SanPhamChiTietResponse {
         this.kichCo = s.getKichCo().getTenKC();
         this.thuongHieu = s.getThuongHieu().getTenTH();
         this.soLuong = s.getSoLuong();
-        this.donGia = s.getDonGia();
+        this.donGia = NumberFormat.getNumberInstance(new Locale("vi","VN")).format(s.getDonGia());
         this.anh = s.getAnh();
         this.moTa = s.getMoTa();
         this.trangThai = s.getTrangThaiSPCT();

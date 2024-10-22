@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elegant Dashboard | Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" />
+    <!-- Custom styles -->
+    <link rel="stylesheet" href="./css/style.min.css" />
+    <style>
+      /*Thêm*/
+      .add-button-container {
+        margin-bottom: 20px;
+      }
+
+      .add-btn {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+      }
+
+      .add-btn i {
+        margin-right: 20px;
+      }
+      /*Thêm*/
+
+      /*Bảng*/
+      .table-container {
+        max-height: 400px;
+        overflow-y: auto;
+        border: 1px solid #525252;
+      }
+
+      .posts-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      .posts-table th,
+      .posts-table td {
+        padding: 10px;
+        text-align: left;
+      }
+
+      .posts-table th {
+        background-color: rgba(255, 255, 255, 0.44);
+      }
+      /*Bảng*/
+
+      /*Tìm kiếm*/
+      .search-container {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+      }
+
+      .search-input {
+        width: 300px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-right: 10px;
+      }
+
+      .search-button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .search-button:hover {
+        background-color: #0056b3;
+      }
+
+      .button-container {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .add-button-container {
+        margin-right: 925px;
+      }
+
+      .search-container {
+        display: flex;
+      }
+      /*Tìm kiếm*/
+      /*Form ẩn*/
+      .form-container {
+        width: 100%;
+        max-width: 700px; /* Tăng chiều rộng tối đa */
+        margin: 40px auto; /* Căn giữa với khoảng cách trên và dưới lớn hơn */
+        padding: 30px; /* Tăng khoảng đệm bên trong */
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Đổ bóng nổi bật hơn */
+      }
+
+      .form-container h5 {
+        text-align: center;
+        margin-bottom: 30px; /* Tăng khoảng cách dưới */
+        color: #2c3e50;
+        font-size: 24px; /* Tăng kích thước chữ */
+        font-weight: bold;
+      }
+
+      .form-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px; /* Khoảng cách giữa các input */
+        margin-bottom: 20px; /* Tăng khoảng cách giữa các dòng */
+      }
+
+      .form-row input,
+      .form-row select {
+        width: 100%; /* Đảm bảo input co giãn đủ chiều rộng */
+        padding: 12px; /* Tăng đệm bên trong */
+        border: 1px solid #ccc;
+        border-radius: 8px; /* Bo góc mềm hơn */
+        font-size: 16px; /* Tăng kích thước chữ */
+      }
+
+      .form-row input:focus,
+      .form-row select:focus {
+        outline: none;
+        border-color: #3498db;
+        box-shadow: 0 0 8px rgba(52, 152, 219, 0.3); /* Thêm hiệu ứng khi focus */
+      }
+
+      .submit-btn {
+        width: 100%; /* Nút rộng bằng form */
+        padding: 15px; /* Tăng đệm bên trong nút */
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 18px; /* Tăng kích thước chữ */
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .submit-btn:hover {
+        background-color: #2980b9;
+      }
+
+      /* CSS mới để ghi đè */
+      .date:enabled:read-write:focus::-webkit-calendar-picker-indicator,
+      .date:enabled:read-write:hover::-webkit-calendar-picker-indicator {
+        display: block !important; /* Hiện lại icon */
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+    <div class="page-flex">
+      <!-- ! Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-start">
+          <div class="sidebar-head">
+            <a href="/" class="logo-wrapper" title="Home">
+              <span class="sr-only">Home</span>
+              <span class="icon logo" aria-hidden="true"></span>
+              <div class="logo-text">
+                <span class="logo-title">Auto_Kid</span>
+              </div>
+            </a>
+            <button
+              class="sidebar-toggle transparent-btn"
+              title="Menu"
+              type="button"
+            >
+              <span class="sr-only">Toggle menu</span>
+              <span class="icon menu-toggle" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="sidebar-body">
+            <ul class="sidebar-body-menu">
+              <li>
+                <a class="active" href="/"
+                  ><span class="icon home" aria-hidden="true"></span>Bán Hàng</a
+                >
+              </li>
+              <li>
+                <a class="active" href="/"
+                  ><span class="icon home" aria-hidden="true"></span>Hóa Đơn</a
+                >
+              </li>
+              <li>
+                <a class="active" href="##">
+                  <span class="icon folder" aria-hidden="true"></span>Sản Phẩm
+                </a>
+              </li>
+              <li>
+                <a class="active" href="##">
+                  <span class="icon folder" aria-hidden="true"></span>Khuyến Mại
+                </a>
+              </li>
+              <li>
+                <a class="active" href="##">
+                  <span class="icon folder" aria-hidden="true"></span>Khách Hàng
+                </a>
+              </li>
+              <li>
+                <a class="active" href="##">
+                  <span class="icon folder" aria-hidden="true"></span>Nhân Viên
+                </a>
+              </li>
+              <li>
+                <a class="active" href="##">
+                  <span class="icon folder" aria-hidden="true"></span>Thống kê
+                </a>
+              </li>
+              <li>
+                <a class="active" href="##">
+                  <span class="icon setting" aria-hidden="true"></span>Settings
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sidebar-footer">
+          <a href="##" class="sidebar-user">
+            <span class="sidebar-user-img">
+              <picture
+                ><source
+                  srcset="./img/avatar/avatar-illustrated-01.webp"
+                  type="image/webp" />
+                <img
+                  src="./img/avatar/avatar-illustrated-01.png"
+                  alt="User name"
+              /></picture>
+            </span>
+            <div class="sidebar-user-info">
+              <span class="sidebar-user__title">Nafisa Sh.</span>
+              <span class="sidebar-user__subtitle">Support manager</span>
+            </div>
+          </a>
+        </div>
+      </aside>
+      <div class="main-wrapper">
+        <!-- ! Main nav -->
+        <nav class="main-nav--bg">
+          <div class="container main-nav">
+            <div class="main-nav-start">
+              <div class="search-wrapper">
+                <i data-feather="search" aria-hidden="true"></i>
+                <input type="text" placeholder="Enter keywords ..." required />
+              </div>
+            </div>
+            <div class="main-nav-end">
+              <button
+                class="theme-switcher gray-circle-btn"
+                type="button"
+                title="Switch theme"
+              >
+                <span class="sr-only">Switch theme</span>
+                <i class="sun-icon" data-feather="sun" aria-hidden="true"></i>
+                <i class="moon-icon" data-feather="moon" aria-hidden="true"></i>
+              </button>
+              <div class="lang-switcher-wrapper">
+                <a class="lang-switcher transparent-btn">
+                  Hello: Nguyễn Bá Hiệp
+                </a>
+              </div>
+              <div class="nav-user-wrapper">
+                <button
+                  href="##"
+                  class="nav-user-btn dropdown-btn"
+                  title="My profile"
+                  type="button"
+                >
+                  <span class="sr-only">My profile</span>
+                  <span class="nav-user-img">
+                    <picture
+                      ><source
+                        srcset="./img/avatar/avatar-illustrated-02.webp"
+                        type="image/webp" />
+                      <img
+                        src="./img/avatar/avatar-illustrated-02.png"
+                        alt="User name"
+                    /></picture>
+                  </span>
+                </button>
+                <ul class="users-item-dropdown nav-user-dropdown dropdown">
+                  <li>
+                    <a href="##">
+                      <i data-feather="user" aria-hidden="true"></i>
+                      <span>Profile</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="##">
+                      <i data-feather="settings" aria-hidden="true"></i>
+                      <span>Account settings</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="danger" href="##">
+                      <i data-feather="log-out" aria-hidden="true"></i>
+                      <span>Log out</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- ! Main -->
+        <main class="main users chart-page" id="skip-target">
+          <div class="container">
+            <h2 class="main-title">Khuyến mại</h2>
+            <div class="button-container">
+              <div class="add-button-container">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#add"
+                >
+                  Thêm
+                </button>
+              </div>
+              <div class="search-container">
+                <input
+                  type="text"
+                  class="search-input"
+                  placeholder="Tìm kiếm khuyến mãi..."
+                />
+                <button class="search-button">Tìm kiếm</button>
+              </div>
+            </div>
+            <div>
+              <div class="table-container">
+                <div class="users-table table-wrapper">
+                  <table class="posts-table">
+                    <thead>
+                      <tr class="users-table-info">
+                        <th>Mã KM</th>
+                        <th>Tên</th>
+                        <th>Mục giảm giá</th>
+                        <th>Điều kiện</th>
+                        <th>Ngày bắt đầu</th>
+                        <th>Ngày kết thúc</th>
+                        <th>Kiểu giảm giá</th>
+                        <th>Số lượng</th>
+                        <th>Trạng thái</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr th:each="promotion : ${promotions}">
+                        <td th:text="${promotion.maKM}"></td>
+                        <td th:text="${promotion.tenKM}"></td>
+                        <td th:text="${promotion.mucGiamGia}"></td>
+                        <td th:text="${promotion.dieuKien}"></td>
+                        <td th:text="${promotion.ngayBatDau}"></td>
+                        <td th:text="${promotion.ngayKetThuc}"></td>
+                        <td th:text="${promotion.kieuGiamGia}"></td>
+                        <td th:text="${promotion.soLuong}"></td>
+                        <td th:text="${promotion.trangThaiKM}"></td>
+                        <td>
+                          <span class="p-relative">
+                            <button
+                              class="dropdown-btn transparent-btn"
+                              type="button"
+                              title="More info"
+                            >
+                              <div class="sr-only">More info</div>
+                              <i
+                                data-feather="more-horizontal"
+                                aria-hidden="true"
+                              ></i>
+                            </button>
+                            <ul class="users-item-dropdown dropdown">
+                              <li>
+                                <a
+                                  class="update"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#hihi"
+                                  th:data-ma="${promotion.maKM}"
+                                  th:data-ten="${promotion.tenKM}"
+                                  th:data-email="${promotion.mucGiamGia}"
+                                  th:data-sdt="${promotion.dieuKien}"
+                                  th:data-diaChi="${promotion.ngayBatDau}"
+                                  th:data-tenNN="${promotion.ngayKetThuc}"
+                                  th:data-sdtNN="${promotion.kieuGiamGia}"
+                                  th:data-dcNN="${promotion.soLuong}"
+                                  th:data-tt="${promotion.trangThaiKM}"
+                                  onclick="showDetail(this)"
+                                  >Details</a
+                                >
+                              </li>
+                              <li><a href="##">Quick edit</a></li>
+                              <li>
+                                <a
+                                  th:href="@{/admin/promotion/delete/{id}(id=${promotion.id})}"
+                                  onclick="return confirm('Bạn có chắc muốn xóa không?');"
+                                  class=""
+                                  >Destroy
+                                </a>
+                              </li>
+                            </ul>
+                          </span>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="col-lg-3"></div>
+            </div>
+          </div>
+        </main>
+        <div>
+          <!-- Modal -->
+          <!--            add-->
+          <div
+            class="modal fade"
+            id="add"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-container">
+                    <h5>Nhập Thông Tin Khuyến Mại</h5>
+                    <form
+                      th:action="@{/admin/promotion/save}"
+                      th:object="${addPromotion}"
+                      method="POST"
+                    >
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="maKM">Mã khuyến mại</label>
+                          <input
+                            type="text"
+                            th:field="*{maKM}"
+                            id="maKM"
+                            placeholder="Mã khuyến mãi"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="tenKM">Tên khuyến mại</label>
+                          <input
+                            type="text"
+                            th:field="*{tenKM}"
+                            id="tenKM"
+                            placeholder="Tên khuyến mãi"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="mucGiamGia">Mức giảm (%)</label>
+                          <input
+                            type="text"
+                            th:field="*{mucGiamGia}"
+                            id="mucGiamGia"
+                            placeholder="Mức giảm (%)"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="dieuKien">Điều kiện</label>
+                          <input
+                            type="text"
+                            th:field="*{dieuKien}"
+                            id="dieuKien"
+                            placeholder="Điều kiện"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="ngayBatDau">Ngày bắt đầu</label>
+                          <input
+                            type="date"
+                            th:field="*{ngayBatDau}"
+                            id="ngayBatDau"
+                            class="date"
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="ngayKetThuc">Ngày kết thúc</label>
+                          <input
+                            type="date"
+                            th:field="*{ngayKetThuc}"
+                            id="ngayKetThuc"
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="kieuGiamGia">Kiểu giảm giá</label>
+                          <input
+                            type="text"
+                            th:field="*{kieuGiamGia}"
+                            id="kieuGiamGia"
+                            placeholder="Kiểu giảm giá"
+                            required
+                          />
+                        </div>
+                        <div class="form-group">
+                          <label for="soLuong">Số lượng</label>
+                          <input
+                            type="text"
+                            th:field="*{soLuong}"
+                            id="soLuong"
+                            placeholder="Số lượng"
+                            required
+                          />
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                          <label for="trangThaiKM">Trạng thái</label>
+                          <select
+                            th:field="*{trangThaiKM}"
+                            id="trangThaiKM"
+                            required
+                          >
+                            <option value="" disabled selected>
+                              Chọn trạng thái
+                            </option>
+                            <option value="0">Hoạt động</option>
+                            <option value="1">Ngưng hoạt động</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <button type="submit" class="submit-btn">
+                        Thêm Khuyến Mại
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--            Detail-->
+          <div
+            class="modal fade"
+            id="hihi"
+            data-bs-backdrop="static"
+            data-bs-keyboard="false"
+            tabindex="-1"
+            aria-labelledby="staticBackdropLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <div class="form-container">
+                    <div id="detailModal" class="form-modal">
+                      <div>
+                        <h5>Nhập Thông Tin Khuyến Mãi</h5>
+                        <form>
+                          <div class="form-row">
+                            <input
+                              type="text"
+                              id="modalMaKH"
+                              placeholder="Mã khuyến mãi"
+                              required
+                            />
+                            <input
+                              type="text"
+                              id="modalTenKH"
+                              placeholder="Tên khuyến mãi"
+                              required
+                            />
+                          </div>
+
+                          <div class="form-row">
+                            <input
+                              type="number"
+                              id="modalEmail"
+                              placeholder="Mức giảm (%)"
+                              required
+                            />
+                            <input
+                              type="text"
+                              id="modalSdt"
+                              placeholder="Điều kiện"
+                              required
+                            />
+                          </div>
+
+                          <div class="form-row">
+                            <input type="date" id="modalDiaChi" required />
+                            <input type="date" id="modalTenNN" required />
+                          </div>
+
+                          <div class="form-row">
+                            <input
+                              type="text"
+                              id="modalSdtNN"
+                              placeholder="Kiểu giảm giá"
+                              required
+                            />
+                            <input
+                              type="number"
+                              id="modalDCNN"
+                              placeholder="Số lượng"
+                              required
+                            />
+                            <input type="text" id="modalTT" placeholder="" />
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- modal-->
+          <script>
+            const myModal = document.getElementById("myModal");
+            const myInput = document.getElementById("myInput");
+
+            myModal.addEventListener("shown.bs.modal", () => {
+              myInput.focus();
+            });
+
+            function showDetail(button) {
+              document.getElementById("modalMaKH").value =
+                button.getAttribute("data-ma");
+              document.getElementById("modalTenKH").value =
+                button.getAttribute("data-ten");
+              document.getElementById("modalEmail").value =
+                button.getAttribute("data-email");
+              document.getElementById("modalSdt").value =
+                button.getAttribute("data-sdt");
+              document.getElementById("modalDiaChi").value =
+                button.getAttribute("data-diaChi");
+              document.getElementById("modalTenNN").value =
+                button.getAttribute("data-tenNN");
+              document.getElementById("modalSdtNN").value =
+                button.getAttribute("data-sdtNN");
+              document.getElementById("modalDCNN").value =
+                button.getAttribute("data-dcNN");
+              document.getElementById("modalTT").value =
+                button.getAttribute("data-tt");
+              document.getElementById("detailModal").style.display = "block";
+            }
+          </script>
+        </div>
+        <!-- ! Footer -->
+        <footer class="footer">
+          <div class="container footer--flex">
+            <div class="footer-start">
+              <p>2024 © Auto_Kid</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <!-- Chart library -->
+    <script src="./plugins/chart.min.js"></script>
+    <!-- Icons library -->
+    <script src="plugins/feather.min.js"></script>
+    <!-- Custom scripts -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

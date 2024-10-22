@@ -23,8 +23,13 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
-  </head>
 
+    <style>
+      input[type="radio"] {
+        background-color: [[${red}]];
+      }
+    </style>
+  </head>
   <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -37,24 +42,14 @@
     <section class="hero hero-normal">
       <div class="container">
         <div class="row">
-          <div class="col-lg-3">
+          <div class="col-lg-3" >
             <div class="hero__categories">
               <div class="hero__categories__all">
                 <i class="fa fa-bars"></i>
                 <span>DANH MỤC</span>
               </div>
-              <ul>
-                <li><a href="#">Fresh Meat</a></li>
-                <li><a href="#">Vegetables</a></li>
-                <li><a href="#">Fruit & Nut Gifts</a></li>
-                <li><a href="#">Fresh Berries</a></li>
-                <li><a href="#">Ocean Foods</a></li>
-                <li><a href="#">Butter & Eggs</a></li>
-                <li><a href="#">Fastfood</a></li>
-                <li><a href="#">Fresh Onion</a></li>
-                <li><a href="#">Papayaya & Crisps</a></li>
-                <li><a href="#">Oatmeal</a></li>
-                <li><a href="#">Fresh Bananas</a></li>
+              <ul >
+                <li th:each="loaisp : ${loaisp}"><a href="#" th:text="*{loaisp.tenLoai}"></a></li>
               </ul>
             </div>
           </div>
@@ -87,7 +82,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpeg">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
@@ -111,22 +106,13 @@
           <div class="col-lg-3 col-md-5">
             <div class="sidebar">
               <div class="sidebar__item">
-                <h4>Department</h4>
+                <h4>Danh mục</h4>
                 <ul>
-                  <li><a href="#">Fresh Meat</a></li>
-                  <li><a href="#">Vegetables</a></li>
-                  <li><a href="#">Fruit & Nut Gifts</a></li>
-                  <li><a href="#">Fresh Berries</a></li>
-                  <li><a href="#">Ocean Foods</a></li>
-                  <li><a href="#">Butter & Eggs</a></li>
-                  <li><a href="#">Fastfood</a></li>
-                  <li><a href="#">Fresh Onion</a></li>
-                  <li><a href="#">Papayaya & Crisps</a></li>
-                  <li><a href="#">Oatmeal</a></li>
+                  <li th:each="loaisp : ${loaisp}"><a href="" th:text="${loaisp.tenLoai}"></a></li>
                 </ul>
               </div>
               <div class="sidebar__item">
-                <h4>Price</h4>
+                <h4>Giá</h4>
                 <div class="price-range-wrap">
                   <div
                     class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
@@ -154,41 +140,10 @@
                 </div>
               </div>
               <div class="sidebar__item sidebar__item__color--option">
-                <h4>Colors</h4>
-                <div class="sidebar__item__color sidebar__item__color--white">
-                  <label for="white">
-                    White
-                    <input type="radio" id="white" />
-                  </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--gray">
-                  <label for="gray">
-                    Gray
-                    <input type="radio" id="gray" />
-                  </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--red">
-                  <label for="red">
-                    Red
-                    <input type="radio" id="red" />
-                  </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--black">
-                  <label for="black">
-                    Black
-                    <input type="radio" id="black" />
-                  </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--blue">
-                  <label for="blue">
-                    Blue
-                    <input type="radio" id="blue" />
-                  </label>
-                </div>
-                <div class="sidebar__item__color sidebar__item__color--green">
-                  <label for="green">
-                    Green
-                    <input type="radio" id="green" />
+                <h4>Màu sắc</h4>
+                <div class="sidebar__item__color " th:each="mausac : ${mausac}">
+                  <label th:text="${mausac.tenMS}" >
+                    <input type="radio" />
                   </label>
                 </div>
               </div>

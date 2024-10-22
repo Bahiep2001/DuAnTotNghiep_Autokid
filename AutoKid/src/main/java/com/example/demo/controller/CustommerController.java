@@ -23,26 +23,7 @@ public class CustommerController {
     @Autowired
     LoaiSanPhamRepo loaiSanPhamRepo;
 
-    @GetMapping("home")
-    public String home(Model model){
-        model.addAttribute("currentPage","home");
-        model.addAttribute("ghct", gioHangChiTietRepo.findAll());
-        model.addAttribute("sanpham", quanLySanPhamService.getAll());
-        model.addAttribute("loaisp", loaiSanPhamRepo.findAll());
-    return "/autokid/index";
-    }
 
-    @GetMapping("/shop")
-    public String showShop(Model model){
-        model.addAttribute("currentPage","shop");
-        return "/autokid/shop-grid";
-    }
-
-    @GetMapping("/shop-detail")
-    public String showShopDetail(Model model){
-        model.addAttribute("currentPage","shop-detail");
-        return "/autokid/shop-details";
-    }
 
     @GetMapping("/shoping-cart")
     public String showShoppingCart(Model model){
